@@ -1,0 +1,18 @@
+<h1>Nytt Spel</h1>
+
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+
+<br>
+
+<%= form_tag("/games", method: "post") do %>
+	<%= label_tag(:player_name1, "Spelare 1:") %>
+	<%= text_field_tag(:player_name1) %>
+	<br>
+	<%= label_tag(:player_name2, "Spelare 2:") %>
+	<%= text_field_tag(:player_name2) %>
+	<br>
+	<%= submit_tag("Starta Spelet") %>
+<% end %>
+
