@@ -1,3 +1,24 @@
 // Place all the styles related to the PlayerGames controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.fa-arrow-right {
+	color: #136DFA;
+	margin-left:-25px;
+	margin-right:10px;
+}
+
+table {
+	color: #777;
+}
+
+.active{
+	background-color: #F3F4FF;
+	color: #333;
+}
+
+.active th,
+.active td{
+	border-color: #ccc
+}

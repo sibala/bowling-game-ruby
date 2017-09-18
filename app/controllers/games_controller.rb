@@ -1,8 +1,4 @@
 class GamesController < ApplicationController
-	def index
-		@games = Game.all
-	end
-
 	def new
 		@game = Game.new
 	end
@@ -16,11 +12,12 @@ class GamesController < ApplicationController
 			session[:player1] = @player1.id
 			session[:player2] = @player2.id
 			session[:game] = @game.id
+			session[:playerTurn] = 1
 
 			redirect_to player_games_url
 		else 
 			flash[:notice] = "Bägge spelar-namnen krävs för att starta spelet" 
-			redirect_to new_game_url
+			redirect_to root_url
 		end
 	end
 end

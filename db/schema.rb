@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170917072610) do
     t.datetime "updated_at", null: false
     t.integer "player_id"
     t.integer "game_id"
-    t.integer "frame_core"
+    t.integer "frame_score"
     t.integer "roll1"
     t.integer "roll2"
     t.integer "roll3"

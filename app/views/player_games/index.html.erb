@@ -1,2 +1,50 @@
-<h1>Player Game</h1>
-<label>Sibar Al-ani</label>
+<div class="container">
+	
+	<div class="row">
+		<div class="col-xs-12">
+			<h1>Bowling Spel</h1>
+		</div>
+	</div>
+
+	<br>
+
+	<div class="row">
+		<div class="col-xs-2">
+			<%= form_tag("/player_games", method: "post") do %>
+				<%= submit_tag("Bowla", class: "form-control btn btn-primary") %>
+			<% end %>
+		</div>
+		<div class="col-sm-4" style="margin-top: 10px">
+			<%= link_to 'Nytt spel', '/'%> |
+			<%= link_to 'Återställ', '/reset'%>
+		</div>
+	</div>
+
+	<hr>
+			
+	<div class="row">
+		<div class="col-xs-12">		
+			<label>Spelare 1: <%= Player.find(session[:player1]).name %> </label>
+			<table class="table table-bordered  <%= session[:playerTurn] == 1 ? 'active' : '' %>">
+				<%= render :partial => "player_games/partials/score_board_content" , :locals => {:playerGames => @playerGames1}%>
+			</table>
+		</div>
+	</div>
+
+	<br>
+	<br>
+
+	<div class="row">
+		<div class="col-xs-8">
+
+			<label>Spelare 2: <%= Player.find(session[:player2]).name %> </label>
+			<table class="table table-bordered  <%= session[:playerTurn] == 1 ? '' : 'active' %>">
+				<%= render :partial => "player_games/partials/score_board_content" , :locals => {:playerGames => @playerGames2}%>
+			</table>
+		</div>
+	</div>
+	
+	<!-- <pre>
+	  <%= @playerGames2.pretty_inspect() %>
+	</pre> -->
+</div>
