@@ -59,6 +59,7 @@ class PlayerGame < ApplicationRecord
 		playerGame.player_id = playerId 
 		playerGame.game_id = gameId
 		playerGame.roll1 = rolls[0]
+		playerGame.display_roll1 = scoreToSign(rolls[0])
 
 		if frameCount == 10
 			if strike? rolls
@@ -70,23 +71,33 @@ class PlayerGame < ApplicationRecord
 
 				playerGame.frame_score = totFrameScore # + rolls[0] + rolls[1] + rolls[2]
 				playerGame.roll2 = rolls[1]
+				playerGame.display_roll2 = scoreToSign(rolls[1])
+
 				playerGame.roll3 = rolls[2]
+				playerGame.display_roll3 = scoreToSign(rolls[2])
+
 
 			elsif spare? rolls
 				playerGame.frame_score = totFrameScore # + rolls[0] + rolls[1] + rolls[2]
 				playerGame.roll2 = rolls[1]
+				playerGame.display_roll2 = "/"
+
 				playerGame.roll3 = rolls[2]
+				playerGame.display_roll3 =scoreToSign(rolls[2])
 			else
 				playerGame.frame_score = totFrameScore
 				playerGame.roll2 = rolls[1]	
+				playerGame.display_roll2 =scoreToSign(rolls[1])
 			end
 		else
 			if !strike? rolls
 				if spare? rolls
 					playerGame.roll2 = rolls[1]
+					playerGame.display_roll2 = "/"
 				else
 					playerGame.frame_score = totFrameScore
 					playerGame.roll2 = rolls[1]	
+					playerGame.display_roll2 =scoreToSign(rolls[1])
 				end
 			end
 		end
@@ -126,7 +137,7 @@ class PlayerGame < ApplicationRecord
 		rolls[0]
 	end
 
-	def self.scoreToSign score
+	def scoreToSign score
 		if score == 10
 			score.to_s.sub('10', "X")
 		elsif score == 0

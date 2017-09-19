@@ -1,0 +1,30 @@
+<tr>
+  <% (1..10).each do |i| %>
+    <% if(i==10) %>
+      <th colspan=3><%= i %></th>
+    <% else %>
+      <th colspan=2><%= i %></th>
+    <% end %>
+  <% end %>
+</tr>
+<tr>
+  <% (0..9).each do |i| %>
+    <% if(i==9) %>
+      <td><%= playerGames[i].present? ? playerGames[i].display_roll1 : '' %></td>
+      <td><%= playerGames[i].present? ? playerGames[i].display_roll2 : '' %></td>
+      <td><%= playerGames[i].present? ? playerGames[i].display_roll3 : '' %></td>
+    <% else %>
+      <td><%= playerGames[i].present? ? playerGames[i].display_roll1 : '' %></td>
+      <td><%= playerGames[i].present? ? playerGames[i].display_roll2 : '' %></td>
+    <% end %>
+  <% end %>
+</tr>
+<tr>
+  <% (0..9).each do |i| %>
+    <% if(i==9) %>
+      <td colspan=3><%= playerGames[i].present?  ? playerGames[i].frame_score : '' %></td>
+    <% else %>
+      <td colspan=2><%= playerGames[i].present?  ? playerGames[i].frame_score : '' %></td>
+    <% end %>
+  <% end %>
+</tr>
