@@ -44,9 +44,6 @@ class PlayerGamesController < ApplicationController
 			redirect_to player_games_url
 			return
 		end
-
-
-		@playerGame = PlayerGame.new
 		
 		if frameCount != 10
 			roll
@@ -59,6 +56,7 @@ class PlayerGamesController < ApplicationController
 		end
 		# abort @rolls.inspect
 		# @rolls = [3, 3]
+		@playerGame = PlayerGame.new
 		@playerGame.score(@player_turn, @game, frameCount, @rolls)
 		# render :text => @rolls.inspect
 		redirect_to player_games_url
